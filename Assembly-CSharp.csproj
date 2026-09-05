@@ -54,11 +54,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\LightTriggerDetector.cs" />
+    <Compile Include="Assets\Scripts\SettingsMenu.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\WaveManager.cs" />
+    <Compile Include="Assets\Scripts\MenuUI.cs" />
     <Compile Include="Assets\Scripts\LightbeamController.cs" />
-    <Compile Include="Assets\Scripts\Core.cs" />
+    <Compile Include="Assets\Scripts\CoreHealth.cs" />
+    <Compile Include="Assets\Scripts\BossEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
