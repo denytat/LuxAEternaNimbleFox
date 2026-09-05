@@ -1,4 +1,3 @@
-```markdown
 # Lux AEterna
 
 **Lux AEterna** is a top-down 2D action-arcade game built in Unity. Players control a central power core emitting a directed beam of light. By steering the beam, burning shadow entities, and sustaining power output, players defend the core against waves of encroaching hostiles while purifying fallen enemies into loyal builder bots.
@@ -53,12 +52,6 @@ PlayerCore (Root - Kinematic Rigidbody 2D, LightbeamController script)
 ## License
 
 This project is released under the MIT License.
-
-```
-
-***
-
-<ElicitationsGroup message="What would you like to focus on next?">
   <Elicitation label="Build an Enemy Wave Spawner" query="How can I set up an Enemy Wave Spawner for Lux AEterna that spawns enemies around the screen edges?"/>
   <Elicitation label="Create the Core Health & Game Over UI" query="How can I create a Core Health system that shows UI health and triggers a Game Over when destroyed?"/>
 </ElicitationsGroup>
