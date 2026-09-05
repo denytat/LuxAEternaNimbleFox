@@ -43,7 +43,7 @@
     <UnityVersion>6000.6.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\s2500698\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.3.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -56,9 +56,13 @@
     <Compile Include="Assets\Scripts\LightTriggerDetector.cs" />
     <Compile Include="Assets\Scripts\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\WaveManager.cs" />
     <Compile Include="Assets\Scripts\MenuUI.cs" />
     <Compile Include="Assets\Scripts\LightbeamController.cs" />
-    <Compile Include="Assets\Scripts\Core.cs" />
+    <Compile Include="Assets\Scripts\CoreHealth.cs" />
+    <Compile Include="Assets\Scripts\BossEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\Music.cs" />

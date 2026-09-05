@@ -1,106 +1,66 @@
-# 💡 Lux AEterna
+```markdown
+# Lux AEterna
 
-> **A 48-Hour Game Jam Entry built with NimbleFox AI for the "First Light" Theme.**
-
-[![Game Jam](https://img.shields.io/badge/Game%20Jam-48%20Hours-orange.svg)](#)
-[![Theme](https://img.shields.io/badge/Theme-First%20Light-yellow.svg)](#)
-[![Engine](https://img.shields.io/badge/AI%20Engine-NimbleFox%20AAI-blue.svg)](#)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](#)
+**Lux AEterna** is a top-down 2D action-arcade game built in Unity. Players control a central power core emitting a directed beam of light. By steering the beam, burning shadow entities, and sustaining power output, players defend the core against waves of encroaching hostiles while purifying fallen enemies into loyal builder bots.
 
 ---
 
-## 🌌 Overview
+## Core Gameplay Mechanics
 
-In **Lux AEterna**, you embody an ancient, god-like celestial machine—**The Solar Core**—awakening in a primordial, dark universe. Your awakening beam is the **"First Light"** this realm has seen in millennia.
-
-You must control a rotating beacon of light to defend your core against creeping shadow entities while powering up autonomous repair drones. Balance offence and defense in a high-stakes, light-driven arcade survival experience!
-
----
-
-## 🎮 Gameplay & Mechanics
-
-* **☀️ The Solar Core (Player):** Positioned at the center of the arena. Control a 360° rotating light beam using your mouse or right joystick.
-* **🤖 Builder Bots (Friendly AI):** Inactive in the darkness. When illuminated by your beam, NimbleFox AAI activates their repair routines, prompting them to move toward damaged sections of the Core.
-* **👥 Shadow Stalkers (Enemy AI):** Dark creatures spawning from the surrounding pitch black. They swarm towards the Core to destroy it, but dissolve when caught directly in your beam of light.
-* **⚖️ The Core Dilemma:** You cannot shine your beam everywhere at once! 
-  * Focus too much on destroying enemies $
-ightarrow$ your Builder Bots remain dormant and cannot repair the Core.
-  * Spend too much time powering Builder Bots $
-ightarrow$ Shadow Stalkers will flank you from the dark angles.
+* **Directional Beam Sweeping:** Rotate the light beam around the core in real time to sweep across approaching enemies.
+* **Dual Light States:**
+  * **Doomed Mode (Default):** A low-power, dimmed beam (10% opacity) that remains visible as a faint glow but deals no damage and cannot convert corpses.
+  * **Active Mode (Powered):** Full opacity beam activated via user input, capable of burning shadow enemies and purifying fallen entities.
+* **Corpse Purification:** When hostiles reach 0 HP, they stop moving and enter a corpse state. Holding the active beam continuously on a corpse for **1 second** transforms it into an **Ally Builder Bot**.
+* **Core Repair Loop:** Converted allies automatically trek back to the central core upon purification to repair its integrity (+5 HP).
 
 ---
 
-## 🛠️ Built With
+## Controls
 
-* **NimbleFox AI System:** Powers agentic pathfinding, state machine transitions, and dynamic light-reaction behaviors.
-* **2D Top-Down Physics Engine:** Efficient 2D raycasting and line-of-sight detection.
-* **Dynamic 2D Lighting & Emissive Shaders:** Striking high-contrast neon visual aesthetic against pitch-black arena fog.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-* Game Engine supported by NimbleFox AAI (Unity 2022.3+ / Unreal Engine 5.x)
-* NimbleFox AAI Plugin / SDK installed
-
-### Installation & Execution
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/lux-automata.git
-   cd lux-automata
-   ```
-
-2. **Open the Project:**
-   Launch your editor and load the project folder. Ensure the NimbleFox AAI plugin is enabled under project settings.
-
-3. **Run the Main Scene:**
-   Navigate to `Assets/Scenes/MainArena.unity` (or equivalent) and press **Play**.
+* **Q:** Rotate Beam Left (Counter-Clockwise)
+* **E:** Rotate Beam Right (Clockwise)
+* **W (Hold):** Power Up Light Beam (Toggle Active Mode)
 
 ---
 
-## 🤖 NimbleFox AAI Integration
+## Architecture & Unity Technical Setup
 
-This project heavily leverages **NimbleFox AI** to manage dual-faction AI state logic based on environmental triggers:
+### Object Hierarchy
+```text
+PlayerCore (Root - Kinematic Rigidbody 2D, LightbeamController script)
+├── Core (Sprite Renderer - Core Graphic & Trigger Collider)
+└── LightBeam (Sprite Renderer - Beam Graphic, Offset Pivot, Trigger Collider)
 
 ```
-                  ┌──────────────────────┐
-                  │   Solar Core Beam    │
-                  └──────────┬───────────┘
-                             │
-            ┌────────────────┴────────────────┐
-            ▼                                 ▼
-   [ Friendly Bot Tag ]             [ Shadow Enemy Tag ]
-            │                                 │
-   Hits Beam?                       Hits Beam?
-  ┌─────────┴─────────┐            ┌──────────┴──────────┐
-  │ YES               │ NO         │ YES                 │ NO
-  ▼                   ▼            ▼                     ▼
-[ State: REPAIR ]  [ State: IDLE ] [ State: DISSOLVE ] [ State: ATTACK ]
- (Path to Core)     (Stop/Standby)  (Take Damage/Die)   (Path to Core)
+
+### Script Overview
+
+* **`LightbeamController.cs`:** Controls Q/E rotation around the core, handles W power state toggling, and updates sprite alpha dynamically between active (1.0) and dimmed (0.1) opacity.
+* **`Enemy.cs`:** Manages hostile pathfinding to the core, damage state tracking, corpse decay timers, sustained light exposure calculation, and ally transformation logic.
+* **`CoreHealth.cs`:** Tracks central core health, applies incoming hostile contact damage, and processes ally repair healing.
+
+---
+
+## Technical Requirements
+
+* **Engine:** Unity (2D Template)
+* **Input System:** Configured for **Both** (Legacy `Input.GetKey` and Unity **New Input System** `UnityEngine.InputSystem`)
+* **Physics Setup:** Kinematic Rigidbodies on root objects with `Is Trigger` 2D Colliders for light-to-enemy interaction detection.
+
+---
+
+## License
+
+This project is released under the MIT License.
+
 ```
 
----
+***
 
-## 🕹️ Controls
+<ElicitationsGroup message="What would you like to focus on next?">
+  <Elicitation label="Build an Enemy Wave Spawner" query="How can I set up an Enemy Wave Spawner for Lux AEterna that spawns enemies around the screen edges?"/>
+  <Elicitation label="Create the Core Health & Game Over UI" query="How can I create a Core Health system that shows UI health and triggers a Game Over when destroyed?"/>
+</ElicitationsGroup>
 
-| Action | Input (Mouse & Keyboard) | Input (Gamepad) |
-| :--- | :--- | :--- |
-| **Rotate Light Beam** | Aim with Mouse Cursor | Right Analog Stick |
-| **Pulse/Focus Beam** | Left Mouse Button / Space | Right Trigger (RT) |
-| **Pause Game** | Esc / P | Start Button |
-
----
-
-## 🏆 Game Jam Details
-
-* **Jam Duration:** 48 Hours
-* **Theme:** *First Light*
-* **Design Philosophy:** Non-religious deity concept based on cosmic architecture and light mechanics.
-
----
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+```

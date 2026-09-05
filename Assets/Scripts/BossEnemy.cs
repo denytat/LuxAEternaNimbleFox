@@ -1,25 +1,19 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class BossEnemy : MonoBehaviour
 {
-    [Header("Enemy Stats")]
-    public float moveSpeed = 2.5f;
-    public float maxHealth = 100f;
-    public float attackDamage = 10f;
+    [Header("Boss Stats")]
+    public float moveSpeed = 1.2f;
+    public float maxHealth = 500f;
+    public float attackDamage = 35f;
 
-    [Header("Death & Conversion Visuals")]
+    [Header("Death Visuals")]
     public Sprite deadSprite;
-    public Sprite allySprite;
-
-    [Header("Ally Settings")]
-    public float allyMoveSpeed = 3.5f;
-    public float coreHealAmount = 5f;
 
     private Transform _coreTransform;
     private float _currentHealth;
     private bool _isInLight = false;
     private bool _isDead = false;
-    private bool _isConvertedToAlly = false;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
@@ -30,21 +24,10 @@ public class Enemy : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
 
-        if (_rb == null)
-        {
-            Debug.LogError($"{gameObject.name} Enemy Prefab is missing a Rigidbody2D!");
-            return;
-        }
-
         GameObject coreObj = GameObject.FindGameObjectWithTag("Core");
         if (coreObj != null)
         {
             _coreTransform = coreObj.transform;
-            Debug.Log($"Enemy {gameObject.name} found Core target!");
-        }
-        else
-        {
-            Debug.LogError("ENEMY FAILED: No object found with Tag 'Core'. Enemies cannot move.");
         }
     }
 
@@ -52,22 +35,18 @@ public class Enemy : MonoBehaviour
     {
         if (_isDead) return;
 
+        if (_coreTransform != null)
+        {
+            Vector2 direction = (_coreTransform.position - transform.position).normalized;
+            transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
         if (_isInLight && LightbeamController.IsBeamActive)
         {
             TakeDamage(LightTriggerDetector._damage * Time.deltaTime);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (_isDead) return;
-
-        if (_coreTransform != null)
-        {
-            float currentSpeed = _isConvertedToAlly ? allyMoveSpeed : moveSpeed;
-            Vector2 direction = (_coreTransform.position - transform.position).normalized;
-
-            _rb.MovePosition(_rb.position + (direction * currentSpeed * Time.fixedDeltaTime));
         }
     }
 
@@ -122,7 +101,7 @@ public class Enemy : MonoBehaviour
                 coreHealth.TakeDamage(attackDamage);
             }
 
-            Debug.Log($"Core hit by {gameObject.name}! Dealt {attackDamage} damage.");
+            Debug.Log($"Core hit by BOSS! Dealt {attackDamage} damage.");
             
             Destroy(gameObject);
         }
