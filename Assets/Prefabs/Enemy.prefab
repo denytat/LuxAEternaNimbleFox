@@ -106,11 +106,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01172aa6d3fdcd24486b2081e4f294ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  _speed: 2
-  _health: 100
-  _attackDamage: 5
-  _coretag: Core
-  _deadSprite: {fileID: -3922939574572093464, guid: 7e3394f6e302c904b876308696302119, type: 3}
+  moveSpeed: 2.5
+  maxHealth: 100
+  attackDamage: 10
+  deadSprite: {fileID: -3922939574572093464, guid: 7e3394f6e302c904b876308696302119, type: 3}
+  allySprite: {fileID: 21300000, guid: 369dbfe3e5502ca4f8aabfef2bb34f74, type: 3}
+  allyMoveSpeed: 3.5
+  coreHealAmount: 5
 --- !u!61 &5086164332026174367
 BoxCollider2D:
   m_ObjectHideFlags: 0
