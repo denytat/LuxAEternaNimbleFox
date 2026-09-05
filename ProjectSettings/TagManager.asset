@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - MenuBackGround
-  - Stars
+  - Enemy
+  - Ally
+  - Core
+  - LightBeam
   layers:
   - Default
   - TransparentFX
