@@ -2,19 +2,30 @@ using UnityEngine;
 
 public class LightTriggerDetector : MonoBehaviour
 {
-    public static float _damage = 200f;
-    
-    private void OnTriggerEnter2D(Collider2D other)
+    public static float damagePerSecond = 50f;
+
+    private void OnTriggerStay2D(Collider2D other)
     {
+        // 1. Check if the beam is powered (W key is held)
+        if (!LightbeamController.IsBeamActive) return;
+
+        // 2. Look for an Enemy or Boss component on the entering object
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Light beam detected!");
-        }
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damagePerSecond * Time.deltaTime);
+                Debug.Log($"[BEAM ATTACK] Dealing damage to {other.name}!");
+                return;
+            }
 
-        if (other.CompareTag("Ally"))
-        {
-            Debug.Log("Ally detected!");
+            BossEnemy boss = other.GetComponent<BossEnemy>();
+            if (boss != null)
+            {
+                boss.TakeDamage(damagePerSecond * Time.deltaTime);
+                Debug.Log($"[BEAM ATTACK] Dealing damage to Boss {other.name}!");
+            }
         }
     }
-    
 }

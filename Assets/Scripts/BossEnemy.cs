@@ -46,7 +46,7 @@ public class BossEnemy : MonoBehaviour
 
         if (_isInLight && LightbeamController.IsBeamActive)
         {
-            TakeDamage(LightTriggerDetector._damage * Time.deltaTime);
+            TakeDamage(LightTriggerDetector.damagePerSecond * Time.deltaTime);
         }
     }
 
