@@ -1,22 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CoreHealth : MonoBehaviour
 {
     [Header("Health Settings")]
     public float maxHealth = 100f;
     public float currentHealth;
+
+    [Header("UI References")]
     [SerializeField] private Slider healthSlider;
     [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject playerCore;
     [SerializeField] private GameObject deathScreenPanel;
-    [SerializeField] private GameObject mainMenuPanel;
 
-    void Start()
+    [Header("Scene Settings")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+    private void Start()
     {
-        currentHealth = maxHealth;
-        if (deathScreenPanel != null) deathScreenPanel.SetActive(false);
-        UpdateHealthUI();
         ResetHealth();
+        if (deathScreenPanel != null) deathScreenPanel.SetActive(false);
+        if (gamePanel != null) gamePanel.SetActive(true);
     }
 
     public void ResetHealth()
@@ -29,21 +34,25 @@ public class CoreHealth : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(0f, currentHealth);
+
+        UpdateHealthUI(); // Используем только безопасный метод!
+
         Debug.Log($"Core Damaged! Health: {currentHealth}/{maxHealth}");
 
         if (currentHealth <= 0f)
         {
             GameOver();
         }
-        healthSlider.value = currentHealth / maxHealth;
     }
 
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        healthSlider.value = currentHealth / maxHealth;
+        UpdateHealthUI(); // Используем только безопасный метод!
+
         Debug.Log($"Core Healed! Health: {currentHealth}/{maxHealth}");
     }
+
     private void UpdateHealthUI()
     {
         if (healthSlider != null)
@@ -52,11 +61,15 @@ public class CoreHealth : MonoBehaviour
         }
     }
 
+  
     private void GameOver()
     {
         Debug.Log("Core Destroyed! Game Over!");
+
         if (gamePanel != null) gamePanel.SetActive(false);
+        if (playerCore != null) playerCore.SetActive(false);
         if (deathScreenPanel != null) deathScreenPanel.SetActive(true);
-        Time.timeScale = 0f;
+
+        Time.timeScale = 0f; // Ставим игру на паузу
     }
 }

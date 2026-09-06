@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -54,27 +55,15 @@ public class UIManager : MonoBehaviour
     // Кнопка 1: Retry
     public void Retry()
     {
-        // Сбрасываем здоровье игрока/ядра
-        CoreHealth core = FindFirstObjectByType<CoreHealth>();
-        if (core != null)
-        {
-            core.ResetHealth();
-        }
-
-        // Переключаем панели
-        if (deathScreenPanel != null) deathScreenPanel.SetActive(false);
-        if (gamePanel != null) gamePanel.SetActive(true);
-
-        Time.timeScale = 1f; // Снимаем с паузы
+        Time.timeScale = 1f; // Снимаем паузу
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Кнопка 2: Main Menu
     public void OpenMainMenu()
     {
-        if (deathScreenPanel != null) deathScreenPanel.SetActive(false);
-        if (gamePanel != null) gamePanel.SetActive(false);
-        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
 
         Time.timeScale = 1f;
+        SceneManager.LoadScene("MenuScene"); // Загружаем главное меню
     }
 }
