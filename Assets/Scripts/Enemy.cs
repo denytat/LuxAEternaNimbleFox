@@ -6,20 +6,14 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 2.5f;
     public float maxHealth = 100f;
     public float attackDamage = 10f;
+    public float beamDamagePerSecond = 50f; // Directly control damage here
 
-    [Header("Death & Conversion Visuals")]
+    [Header("Death Visuals")]
     public Sprite deadSprite;
-    public Sprite allySprite;
-
-    [Header("Ally Settings")]
-    public float allyMoveSpeed = 3.5f;
-    public float coreHealAmount = 5f;
 
     private Transform _coreTransform;
     private float _currentHealth;
-    private bool _isInLight = false;
     private bool _isDead = false;
-    private bool _isConvertedToAlly = false;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
@@ -30,44 +24,41 @@ public class Enemy : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
 
-        if (_rb == null)
-        {
-            Debug.LogError($"{gameObject.name} Enemy Prefab is missing a Rigidbody2D!");
-            return;
-        }
-
         GameObject coreObj = GameObject.FindGameObjectWithTag("Core");
-        if (coreObj != null)
-        {
-            _coreTransform = coreObj.transform;
-            Debug.Log($"Enemy {gameObject.name} found Core target!");
-        }
-        else
-        {
-            Debug.LogError("ENEMY FAILED: No object found with Tag 'Core'. Enemies cannot move.");
-        }
+        if (coreObj != null) _coreTransform = coreObj.transform;
     }
 
     void Update()
     {
         if (_isDead) return;
 
-        if (_isInLight && LightbeamController.IsBeamActive)
+        // Move toward core
+        if (_coreTransform != null)
         {
-            TakeDamage(LightTriggerDetector._damage * Time.deltaTime);
+            Vector2 direction = (_coreTransform.position - transform.position).normalized;
+            transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
-    void FixedUpdate()
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (_isDead) return;
 
-        if (_coreTransform != null)
+        // Check if touching LightBeam AND beam is powered up with W
+        if (other.CompareTag("LightBeam"))
         {
-            float currentSpeed = _isConvertedToAlly ? allyMoveSpeed : moveSpeed;
-            Vector2 direction = (_coreTransform.position - transform.position).normalized;
-
-            _rb.MovePosition(_rb.position + (direction * currentSpeed * Time.fixedDeltaTime));
+            if (LightbeamController.IsBeamActive)
+            {
+                TakeDamage(beamDamagePerSecond * Time.deltaTime);
+                Debug.Log($"[DAMAGE APPLIED] Enemy HP: {_currentHealth}/{maxHealth}");
+            }
+            else
+            {
+                Debug.Log("[TOUCHING BEAM] Hold W to activate beam!");
+            }
         }
     }
 
@@ -76,7 +67,6 @@ public class Enemy : MonoBehaviour
         if (_isDead) return;
 
         _currentHealth -= amount;
-        
         if (_currentHealth <= 0f)
         {
             Die();
@@ -93,14 +83,12 @@ public class Enemy : MonoBehaviour
             WaveManager.Instance.OnEnemyKilled();
         }
 
-        if (_rb != null)
-        {
-            _rb.linearVelocity = Vector2.zero;
-        }
+        if (_rb != null) _rb.linearVelocity = Vector2.zero;
 
         if (deadSprite != null && _spriteRenderer != null)
         {
             _spriteRenderer.sprite = deadSprite;
+            _spriteRenderer.color = Color.gray;
         }
 
         Destroy(gameObject, 2.0f);
@@ -108,31 +96,14 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("LightBeam"))
-        {
-            _isInLight = true;
-        }
-
         if (other.CompareTag("Core") && !_isDead)
         {
             CoreHealth coreHealth = other.GetComponentInParent<CoreHealth>();
-            
             if (coreHealth != null)
             {
                 coreHealth.TakeDamage(attackDamage);
             }
-
-            Debug.Log($"Core hit by {gameObject.name}! Dealt {attackDamage} damage.");
-            
             Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("LightBeam"))
-        {
-            _isInLight = false;
         }
     }
 }
