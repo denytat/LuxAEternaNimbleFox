@@ -63,9 +63,10 @@ public class CoreHealth : MonoBehaviour
         Debug.Log("Core Destroyed! Game Over!");
 
         if (gamePanel != null) gamePanel.SetActive(false);
-        if (playerCore != null) playerCore.SetActive(false);
         if (deathScreenPanel != null) deathScreenPanel.SetActive(true);
 
         Time.timeScale = 0f; // Ставим игру на паузу
+
+        if (playerCore != null) playerCore.SetActive(false);
     }
 }

@@ -7,8 +7,12 @@
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\corehealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity\\luxaeternanimblefox\\assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UIManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity\\luxaeternanimblefox\\assets\\scripts\\music.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UIManager.cs",
-              "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UIManager.cs",
-              "ToolTip": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UIManager.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAADwv0QAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-05T17:35:46.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Music.cs",
               "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\Music.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Music.cs",
@@ -71,12 +62,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Music.cs",
               "ViewState": "AgIAABAAAAAAAAAAAADwvzYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-05T15:04:36.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-05T15:04:36.331Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SettingsMenu.cs",
               "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\SettingsMenu.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SettingsMenu.cs",
@@ -88,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UI.cs",
               "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI.cs",
@@ -100,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MenuUI.cs",
               "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\MenuUI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MenuUI.cs",
@@ -118,10 +108,35 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\CoreHealth.cs",
               "ToolTip": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\CoreHealth.cs",
               "RelativeToolTip": "Assets\\Scripts\\CoreHealth.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAUwEQAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwEUAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-05T16:48:46.9Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIManager.cs",
+              "ToolTip": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIManager.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-06T13:57:14.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIManager.cs",
+              "ToolTip": "C:\\UNITY\\LuxAEternaNimbleFox\\Assets\\Scripts\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIManager.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADwv0QAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T17:35:46.678Z"
             }
           ]
         }
