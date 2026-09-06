@@ -19,13 +19,6 @@ public class LightTriggerDetector : MonoBehaviour
                 Debug.Log($"[BEAM ATTACK] Dealing damage to {other.name}!");
                 return;
             }
-
-            BossEnemy boss = other.GetComponent<BossEnemy>();
-            if (boss != null)
-            {
-                boss.TakeDamage(damagePerSecond * Time.deltaTime);
-                Debug.Log($"[BEAM ATTACK] Dealing damage to Boss {other.name}!");
-            }
         }
     }
 }

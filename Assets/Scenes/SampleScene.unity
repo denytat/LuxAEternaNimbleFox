@@ -575,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &395062426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1794064546}
-  m_Father: {fileID: 1529406982}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -939,10 +939,10 @@ RectTransform:
   - {fileID: 1976707779}
   m_Father: {fileID: 1794064546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.1, y: -112.25}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.31447577, y: 0.35837045}
+  m_AnchorMax: {x: 0.67875314, y: 0.42966667}
+  m_AnchoredPosition: {x: -0.1000061, y: 2.25}
+  m_SizeDelta: {x: -156.59998, y: -37.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778917646
 MonoBehaviour:
@@ -1228,7 +1228,6 @@ MonoBehaviour:
   gamePanel: {fileID: 115655785}
   playerCore: {fileID: 1529406981}
   deathScreenPanel: {fileID: 1794064545}
-  mainMenuSceneName: MainMenu
 --- !u!1 &880557769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1472,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1581,6 +1580,7 @@ GameObject:
   - component: {fileID: 1529406982}
   - component: {fileID: 1529406985}
   - component: {fileID: 1529406986}
+  - component: {fileID: 1529406987}
   m_Layer: 0
   m_Name: PlayerCore
   m_TagString: Core
@@ -1603,7 +1603,6 @@ Transform:
   m_Children:
   - {fileID: 811520663}
   - {fileID: 1398557478}
-  - {fileID: 395062426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1529406985
@@ -1634,7 +1633,36 @@ MonoBehaviour:
   rotationSpeed: 200
   beamKey: 119
   beamSpriteRenderer: {fileID: 1398557477}
+  beamCollider: {fileID: 1398557481}
   dimmedAlpha: 0.1
+  damagePerSecond: 50
+--- !u!50 &1529406987
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529406981}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!1 &1727709933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,10 +1750,10 @@ RectTransform:
   - {fileID: 778917645}
   m_Father: {fileID: 395062426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.899963, y: 0}
-  m_SizeDelta: {x: -1048.6, y: 0}
+  m_AnchorMin: {x: 0.27825004, y: 0}
+  m_AnchorMax: {x: 0.7348751, y: 1}
+  m_AnchoredPosition: {x: -1.6000366, y: 0}
+  m_SizeDelta: {x: -5.5999756, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794064547
 MonoBehaviour:
@@ -2071,7 +2099,6 @@ MonoBehaviour:
   waveText: {fileID: 210666430}
   gamePanel: {fileID: 115655785}
   deathScreenPanel: {fileID: 1794064545}
-  mainMenuPanel: {fileID: 0}
 --- !u!4 &2015542661
 Transform:
   m_ObjectHideFlags: 0
@@ -2254,10 +2281,10 @@ RectTransform:
   - {fileID: 358341283}
   m_Father: {fileID: 1794064546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 161.4, y: 39.4}
+  m_AnchorMin: {x: 0.31447577, y: 0.45922223}
+  m_AnchorMax: {x: 0.67875314, y: 0.5324815}
+  m_AnchoredPosition: {x: 3, y: 4.5}
+  m_SizeDelta: {x: -156.6, y: -39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045587518
 MonoBehaviour:
@@ -2440,3 +2467,4 @@ SceneRoots:
   - {fileID: 250314373}
   - {fileID: 1727709935}
   - {fileID: 2015542661}
+  - {fileID: 395062426}

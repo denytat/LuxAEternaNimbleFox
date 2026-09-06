@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     [SerializeField] private GameObject gamePanel;        // Игровой HUD (текст волны, HP)
     [SerializeField] private GameObject deathScreenPanel; // Панель экрана смерти
-    [SerializeField] private GameObject mainMenuPanel;   // Главное меню
 
     private void Awake()
     {
@@ -43,14 +42,6 @@ public class UIManager : MonoBehaviour
     }
 
     // --- УПРАВЛЕНИЕ ЭКРАНОМ СМЕРТИ ---
-
-    public void ShowDeathScreen()
-    {
-        if (gamePanel != null) gamePanel.SetActive(false);
-        if (deathScreenPanel != null) deathScreenPanel.SetActive(true);
-
-        Time.timeScale = 0f; // Пауза игры при поражении
-    }
 
     // Кнопка 1: Retry
     public void Retry()

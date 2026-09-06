@@ -11,18 +11,17 @@ public class LightbeamController : MonoBehaviour
 
     [Header("Beam Power Settings")]
     public KeyCode beamKey = KeyCode.W;
-    public SpriteRenderer beamSpriteRenderer;
-    public Collider2D beamCollider; // Drag your LightBeam's Collider2D here!
+    public SpriteRenderer beamSpriteRenderer; // Drag 'LightBeam' child sprite here
+    public Collider2D beamCollider;           // Drag 'LightBeam' child collider here
     
     [Range(0f, 1f)]
-    public float dimmedAlpha = 0.1f;
+    public float dimmedAlpha = 0.1f; // Opacity when W is not held
 
-    [Header("Damage Settings")]
+    [Header("Damage & Purification Settings")]
     public float damagePerSecond = 50f;
 
     public static bool IsBeamActive { get; private set; } = false;
 
-    // Contact filter to catch trigger colliders
     private ContactFilter2D _contactFilter;
     private List<Collider2D> _hitColliders = new List<Collider2D>();
 
@@ -31,7 +30,7 @@ public class LightbeamController : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        // Setup filter to detect all triggers and colliders
+        // Setup filter to catch all triggers and physics colliders
         _contactFilter = new ContactFilter2D();
         _contactFilter.NoFilter();
         _contactFilter.useTriggers = true;
@@ -39,20 +38,35 @@ public class LightbeamController : MonoBehaviour
 
     void Update()
     {
-        // 1. Check Input
+        HandleBeamPower();
+        HandleBeamRotation();
+
+        // Perform continuous light overlap processing when W is active
+        if (IsBeamActive && beamCollider != null)
+        {
+            ProcessLightImpacts();
+        }
+    }
+
+    private void HandleBeamPower()
+    {
+        // Support Legacy & New Input System
         bool wPressedLegacy = Input.GetKey(beamKey);
         bool wPressedNewInput = Keyboard.current != null && Keyboard.current.wKey.isPressed;
+
         IsBeamActive = wPressedLegacy || wPressedNewInput;
 
-        // 2. Visual Opacity Shift
+        // Visual Feedback: Active (1.0 Alpha) vs Dimmed (0.1 Alpha)
         if (beamSpriteRenderer != null)
         {
             Color c = beamSpriteRenderer.color;
             c.a = IsBeamActive ? 1.0f : dimmedAlpha;
             beamSpriteRenderer.color = c;
         }
+    }
 
-        // 3. Q/E Rotation
+    private void HandleBeamRotation()
+    {
         float dir = 0f;
         if (Input.GetKey(KeyCode.Q) || (Keyboard.current != null && Keyboard.current.qKey.isPressed)) dir += 1f;
         if (Input.GetKey(KeyCode.E) || (Keyboard.current != null && Keyboard.current.eKey.isPressed)) dir -= 1f;
@@ -61,15 +75,9 @@ public class LightbeamController : MonoBehaviour
         {
             transform.Rotate(0f, 0f, dir * rotationSpeed * Time.deltaTime);
         }
-
-        // 4. DIRECT OVERLAP DAMAGE CHECK (Bypasses Unity Trigger events)
-        if (IsBeamActive && beamCollider != null)
-        {
-            ApplyBeamDamage();
-        }
     }
 
-    private void ApplyBeamDamage()
+    private void ProcessLightImpacts()
     {
         _hitColliders.Clear();
         int hitCount = beamCollider.Overlap(_contactFilter, _hitColliders);
@@ -79,21 +87,12 @@ public class LightbeamController : MonoBehaviour
             Collider2D col = _hitColliders[i];
             if (col == null || col.gameObject == gameObject) continue;
 
-            // Damage Normal Enemy
+            // 1. Process Standard Enemies (Handles active damage & dead corpse conversion)
             Enemy enemy = col.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damagePerSecond * Time.deltaTime);
-                Debug.Log($"[BEAM OVERLAP] Damaging Enemy: {col.name}");
+                enemy.ProcessLightExposure(damagePerSecond * Time.deltaTime);
                 continue;
-            }
-
-            // Damage Boss Enemy
-            BossEnemy boss = col.GetComponent<BossEnemy>();
-            if (boss != null)
-            {
-                boss.TakeDamage(damagePerSecond * Time.deltaTime);
-                Debug.Log($"[BEAM OVERLAP] Damaging Boss: {col.name}");
             }
         }
     }

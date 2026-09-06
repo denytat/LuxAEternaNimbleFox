@@ -62,7 +62,6 @@
     <Compile Include="Assets\Scripts\MenuUI.cs" />
     <Compile Include="Assets\Scripts\LightbeamController.cs" />
     <Compile Include="Assets\Scripts\CoreHealth.cs" />
-    <Compile Include="Assets\Scripts\BossEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Music.cs" />
   </ItemGroup>

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CoreHealth : MonoBehaviour
 {
@@ -13,9 +12,6 @@ public class CoreHealth : MonoBehaviour
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject playerCore;
     [SerializeField] private GameObject deathScreenPanel;
-
-    [Header("Scene Settings")]
-    [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private void Start()
     {

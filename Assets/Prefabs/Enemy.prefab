@@ -110,11 +110,12 @@ MonoBehaviour:
   moveSpeed: 2.5
   maxHealth: 100
   attackDamage: 10
+  beamDamagePerSecond: 200
   deadSprite: {fileID: -3922939574572093464, guid: 7e3394f6e302c904b876308696302119, type: 3}
   allySprite: {fileID: 21300000, guid: 369dbfe3e5502ca4f8aabfef2bb34f74, type: 3}
+  timeInLightToConvert: 1
   allyMoveSpeed: 3.5
   coreHealAmount: 5
-  timeInLightToConvert: 1
 --- !u!61 &5086164332026174367
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 7161717380493992170}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
