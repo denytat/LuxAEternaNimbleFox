@@ -54,6 +54,3 @@ PlayerCore (Root - Kinematic Rigidbody 2D, LightbeamController script)
 This project is released under the MIT License.
   <Elicitation label="Build an Enemy Wave Spawner" query="How can I set up an Enemy Wave Spawner for Lux AEterna that spawns enemies around the screen edges?"/>
   <Elicitation label="Create the Core Health & Game Over UI" query="How can I create a Core Health system that shows UI health and triggers a Game Over when destroyed?"/>
-</ElicitationsGroup>
-
-```
