@@ -577,7 +577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &395062426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1924,6 +1924,7 @@ MonoBehaviour:
   maxBattery: 100
   drainRate: 20
   rechargeRate: 15
+  minimumChargeToFire: 15
   damagePerSecond: 50
 --- !u!50 &1529406987
 Rigidbody2D:
@@ -2021,7 +2022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1794064546
 RectTransform:
   m_ObjectHideFlags: 0

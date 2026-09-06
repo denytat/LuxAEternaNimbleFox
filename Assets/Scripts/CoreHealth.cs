@@ -65,6 +65,12 @@ public class CoreHealth : MonoBehaviour
         if (gamePanel != null) gamePanel.SetActive(false);
         if (deathScreenPanel != null) deathScreenPanel.SetActive(true);
 
+        Enemy[] allEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        foreach (Enemy enemy in allEnemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+
         Time.timeScale = 0f; // Ставим игру на паузу
 
         if (playerCore != null) playerCore.SetActive(false);
