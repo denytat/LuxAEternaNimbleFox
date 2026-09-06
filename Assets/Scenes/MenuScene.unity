@@ -910,7 +910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.1900008}
+  m_AnchoredPosition: {x: 0, y: 1.1900005}
   m_SizeDelta: {x: 0, y: 2.3799987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525562078
@@ -1082,8 +1082,8 @@ Canvas:
   m_GameObject: {fileID: 856845826}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 2069443163}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1152,7 +1152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &930167557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 692.8, y: 86.72}
+  m_AnchoredPosition: {x: 654, y: 172}
   m_SizeDelta: {x: 550.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610335576
@@ -1735,21 +1735,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'github.com/romanButkus
+  m_text: 'Credentials
+
+    github.com/denytat
 
     github.com/shineeepng
 
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5421d755213ec9489b14c2688ce2231, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 402930260f077664e8f3ac9a63ad6ed1, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 64cd64bf4b0e90f49b94e317bb55b5f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283524251
+  m_fontColor: {r: 0.60784316, g: 0.39215687, b: 0.31764707, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1766,8 +1768,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2119,7 +2121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 97.3, y: -47}
+  m_AnchoredPosition: {x: 0, y: -47}
   m_SizeDelta: {x: 184.1, y: 166.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1958464463
@@ -2365,11 +2367,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 800535252437339987, guid: 6a0f931a883c9384ebb28e5335d0ee96, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 800535252437339987, guid: 6a0f931a883c9384ebb28e5335d0ee96, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 800535254099626321, guid: 6a0f931a883c9384ebb28e5335d0ee96, type: 3}
       propertyPath: m_Name
@@ -2638,7 +2640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.1200001}
+  m_AnchoredPosition: {x: 0, y: 1.1199999}
   m_SizeDelta: {x: 0, y: 2.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123775127
